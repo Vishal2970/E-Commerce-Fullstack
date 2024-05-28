@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home } from "./Pages/Home";
 import { NavBar } from "./Components/NavBar";
-import { Footer } from "./Components/Footer";
+// import { Footer } from "./Components/Footer";
 import { Login } from "./Pages/Login";
 import { SignUp } from "./Pages/SignUp";
 import { About } from "./Pages/About";
@@ -24,15 +24,3 @@ function App() {
 }
 
 export default App;
-
-// <BrowserRouter>
-//         <Navbar />
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/about" element={<About />} />
-//           <Route path="/contact" element={<Contact />} />
-//           <Route path="/service" element={<Service />} />
-//           <Route path="/register" element={<Register />} />
-//           <Route path="/login" element={<Login />} />
-//         </Routes>
-//       </BrowserRouter>

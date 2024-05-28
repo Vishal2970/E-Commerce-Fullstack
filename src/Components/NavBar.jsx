@@ -1,17 +1,19 @@
+import { useLocation } from "react-router-dom";
+
 export function NavBar() {
-    var sectionStyle = {
-        width: "100%",
-        height: "400px",
-      };
+  const location = useLocation();
+  const currentPath = location.pathname;
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a 
-          className="navbar-brand"
-           href="/">
-            <img src="/Spotmarket-logo-profile.jpg" alt="Bootstrap" width="100" height="60"></img>
-            {/* <img src="/Spotmarket-logo-profile.jpg" style={sectionStyle} alt="Spot Market" /> */}
+          <a className="navbar-brand" href="/">
+            <img
+              src="/Spotmarket-logo-profile.jpg"
+              alt="Bootstrap"
+              width="100"
+              height="60"
+            />
           </a>
           <button
             className="navbar-toggler"
@@ -31,8 +33,7 @@ export function NavBar() {
             >
               <li className="nav-item">
                 <a
-                class="btn btn-outline-dark m-2"
-                //   className="nav-link active"
+                  className="btn btn-outline-dark m-2"
                   aria-current="page"
                   href="/About"
                 >
@@ -40,26 +41,22 @@ export function NavBar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a 
-                class="btn btn-outline-dark m-2"
-                // className="nav-link"
-                 href="/Contactus">
+                <a className="btn btn-outline-dark m-2" href="/Contactus">
                   Contact-US
                 </a>
               </li>
             </ul>
             <div className="d-flex">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {/* <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="/login"
-                >
-                  Login
-                </a> */}
-                <a class="btn btn-outline-primary m-2" href="/login" role="button">
-                  Login
-                </a>
+                {currentPath !== "/login" && currentPath !== "/signup" && (
+                  <a
+                    className="btn btn-outline-primary m-2"
+                    href="/login"
+                    role="button"
+                  >
+                    Login
+                  </a>
+                )}
               </ul>
             </div>
           </div>
