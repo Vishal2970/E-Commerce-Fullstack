@@ -32,18 +32,22 @@ export function NavBar() {
               style={{ "--bs-scroll-height": "100px" }}
             >
               <li className="nav-item">
-                <a
-                  className="btn btn-outline-dark m-2"
-                  aria-current="page"
-                  href="/About"
-                >
-                  About
-                </a>
+                {currentPath !== "/About" && (
+                  <a
+                    className="btn btn-outline-dark m-2"
+                    aria-current="page"
+                    href="/About"
+                  >
+                    About
+                  </a>
+                )}
               </li>
               <li className="nav-item">
-                <a className="btn btn-outline-dark m-2" href="/Contactus">
-                  Contact-US
-                </a>
+                {currentPath !== "/contactus" && (
+                  <a className="btn btn-outline-dark m-2" href="/contactus">
+                    Contact-US
+                  </a>
+                )}
               </li>
             </ul>
             <div className="d-flex">
