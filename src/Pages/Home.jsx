@@ -1,8 +1,8 @@
-import { NavBar } from "../Components/NavBar";
+// import { NavBar } from "../Components/NavBar";
 export function Home(props) {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>Hello {props.Name}</h1>
     </>
   );

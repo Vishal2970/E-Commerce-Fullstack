@@ -1,10 +1,10 @@
 import Helmet from "react-helmet";
-import { NavBar } from "../Components/NavBar";
+// import { NavBar } from "../Components/NavBar";
 
 export function SignUp() {
   return (
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
       <Helmet bodyAttributes={{ style: "background-color :#FADCAB" }} />
       <div className="position-absolute top-50 start-50 translate-middle">
         <div className="card" style={{ width: "28rem", height: "32rem" }}>

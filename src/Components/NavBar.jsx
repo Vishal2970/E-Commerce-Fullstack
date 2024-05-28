@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 
-export function NavBar() {
+export function NavBar(props) {
   const location = useLocation();
+//   const ispermisson = props.register;
   const currentPath = location.pathname;
   return (
     <>
@@ -50,19 +51,21 @@ export function NavBar() {
                 )}
               </li>
             </ul>
-            <div className="d-flex">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {currentPath !== "/login" && currentPath !== "/signup" && (
-                  <a
-                    className="btn btn-outline-primary m-2"
-                    href="/login"
-                    role="button"
-                  >
-                    Login
-                  </a>
-                )}
-              </ul>
-            </div>
+            {props.register === "true" && (
+              <div className="d-flex">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  {currentPath !== "/login" && currentPath !== "/signup" && (
+                    <a
+                      className="btn btn-outline-primary m-2"
+                      href="/login"
+                      role="button"
+                    >
+                      Login
+                    </a>
+                  )}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </nav>

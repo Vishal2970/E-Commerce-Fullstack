@@ -1,8 +1,8 @@
-import { NavBar } from "../Components/NavBar";
+// import { NavBar } from "../Components/NavBar";
 export function ContactUs() {
   return (
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
       <h1>Hello i am contact us page</h1>
     </>
   );
