@@ -10,7 +10,7 @@ import { ContactUs } from "./Pages/ContactUs";
 function App() {
   return (
     <BrowserRouter>
-      <NavBar isregister="true"/>
+      <NavBar isVisible={true}/>
       <Routes>
         <Route path="/" element={<Home Name ="Vishal"/>} />
         <Route path="/login" element={<Login />} />
