@@ -53,6 +53,7 @@ export function NavBar(props) {
           {props.isVisible ? (
             <div className="d-flex">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                {currentPath !== "/loginmode" && (
                   <li className="nav-item">
                     <a
                       className="btn btn-outline-primary m-2"
@@ -62,6 +63,7 @@ export function NavBar(props) {
                       Login
                     </a>
                   </li>
+                )}
               </ul>
             </div>
           ) : null}
