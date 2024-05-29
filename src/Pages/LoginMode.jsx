@@ -18,7 +18,7 @@ export function LoginMode() {
                   width="300"
                   height="200"
                 />
-                <Link to="/login/eb343a" className="btn btn-primary m-3 p-2">
+                <Link to="/login/eb5e34" className="btn btn-primary m-3 p-2">
                   Login
                 </Link>
               </div>
@@ -34,7 +34,7 @@ export function LoginMode() {
                   width="300"
                   height="200"
                 />
-                <Link to="/login/e5eb34" className="btn btn-primary m-3 p-2">
+                <Link to="/login/6322f0" className="btn btn-primary m-3 p-2">
                   Login
                 </Link>
               </div>
