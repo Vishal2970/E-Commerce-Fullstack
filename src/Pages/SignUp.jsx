@@ -1,11 +1,13 @@
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 import Helmet from "react-helmet";
-// import { NavBar } from "../Components/NavBar";
 
 export function SignUp() {
+  const { color } = useParams(); // Use useParams to get the color from the URL
+
   return (
     <>
-      {/* <NavBar/> */}
-      <Helmet bodyAttributes={{ style: "background-color :#FADCAB" }} />
+      <Helmet bodyAttributes={{ style: `background-color: #${color}` }} />
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="card w-100 mx-3" style={{ maxWidth: "28rem" }}>
           <div className="card-body">
@@ -54,9 +56,9 @@ export function SignUp() {
               </form>
             </p>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <a className="btn btn-outline-primary" href="/login" role="button">
+              <Link to={`/login/${color}`} className="btn btn-outline-primary m-3 p-2">
                 Login
-              </a>
+              </Link>
             </ul>
           </div>
         </div>
