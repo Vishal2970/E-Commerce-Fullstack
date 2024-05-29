@@ -7,12 +7,14 @@ import { Login } from "./Pages/Login";
 import { SignUp } from "./Pages/SignUp";
 import { About } from "./Pages/About";
 import { ContactUs } from "./Pages/ContactUs";
+import { LoginMode } from "./Pages/LoginMode";
 function App() {
   return (
     <BrowserRouter>
       <NavBar isVisible={true}/>
       <Routes>
         <Route path="/" element={<Home Name ="Vishal"/>} />
+        <Route path="/loginmode" element={<LoginMode />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />

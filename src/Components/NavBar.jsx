@@ -10,7 +10,7 @@ export function NavBar(props) {
         <a className="navbar-brand" href="/">
           <img
             src="/Spotmarket-logo-profile.jpg"
-            alt="Bootstrap"
+            alt="Logo"
             width="100"
             height="60"
           />
@@ -53,17 +53,15 @@ export function NavBar(props) {
           {props.isVisible ? (
             <div className="d-flex">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {currentPath !== "/login" && currentPath !== "/signup" && (
                   <li className="nav-item">
                     <a
                       className="btn btn-outline-primary m-2"
-                      href="/login"
+                      href="/loginmode"
                       role="button"
                     >
                       Login
                     </a>
                   </li>
-                )}
               </ul>
             </div>
           ) : null}
