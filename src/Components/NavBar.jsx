@@ -80,7 +80,7 @@ export function NavBar(props) {
           ) : null} */}
 
           {/* for cart */}
-
+          {currentPath !== "/loginmode" && !/^\/login/.test(currentPath) && !/^\/signup/.test(currentPath) &&(
           <button
             type="button"
             className="btn btn-primary"
@@ -89,7 +89,7 @@ export function NavBar(props) {
           >
             <img src="/cart.png" alt="Cart" width="40" height="40" />
           </button>
-
+          )}
           <div
             className="modal fade"
             id="exampleModal"
