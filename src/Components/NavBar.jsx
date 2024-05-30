@@ -78,6 +78,8 @@ export function NavBar(props) {
             width="40"
             height="40" />
           </button>
+
+          
         </div>
       </div>
     </nav>

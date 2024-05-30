@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 
 export function Login() {
-  const { color } = useParams();  // Use useParams to get the color from the URL
-
+  const { color } = useParams(); // Use useParams to get the color from the URL
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(login);
+    const data = login.email + "--" + login.password;
+    alert(data);
+  };
+  const OnchangeHandle = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setLogin({
+      ...login,
+      [name]: value,
+    });
+  };
   return (
     <>
       <Helmet bodyAttributes={{ style: `background-color: #${color}` }} />
@@ -14,13 +31,16 @@ export function Login() {
           <div className="card-body">
             <h5 className="card-title m-2 p-1">Login</h5>
             <p className="card-text m-2 p-1">
-              <form action="">
+              <form>
                 <div className="form-floating mb-3">
                   <input
                     type="email"
                     className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
+                    name="email"
+                    value={login.email}
+                    onChange={OnchangeHandle}
                   />
                   <label htmlFor="floatingInput">Email address</label>
                 </div>
@@ -30,10 +50,17 @@ export function Login() {
                     className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
+                    name="password"
+                    value={login.password}
+                    onChange={OnchangeHandle}
                   />
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
-                <button type="button" className="btn btn-outline-success m-3">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="btn btn-outline-success m-3"
+                >
                   Login
                 </button>
               </form>
@@ -43,8 +70,8 @@ export function Login() {
                 Register
               </a> */}
               <Link to={`/signup/${color}`} className="btn btn-primary m-3 p-2">
-                  Register
-                </Link>
+                Register
+              </Link>
             </ul>
           </div>
         </div>
