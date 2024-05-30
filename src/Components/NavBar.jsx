@@ -50,7 +50,10 @@ export function NavBar(props) {
               )}
             </li>
           </ul>
-          {props.isVisible ? (
+
+              {/* for login mode button */}
+
+          {/* {props.isVisible ? (
             <div className="d-flex">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 {currentPath !== "/loginmode" && (
@@ -66,7 +69,15 @@ export function NavBar(props) {
                 )}
               </ul>
             </div>
-          ) : null}
+          ) : null} */}
+
+          {/* for cart */}
+
+          <button type="button" class="btn btn-outline-primary m-2">
+           <img src="/cart.svg" alt="Cart"
+            width="40"
+            height="40" />
+          </button>
         </div>
       </div>
     </nav>
