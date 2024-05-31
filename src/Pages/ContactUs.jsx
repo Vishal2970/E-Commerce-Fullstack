@@ -1,7 +1,29 @@
+import { useState } from "react";
+
 export function ContactUs() {
+  const [contacting, Setcontacting] = useState({
+    name: "",
+    number: "+91",
+    email: "",
+    msg: "",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Submitted");
+    console.log(contacting);
+    Setcontacting({
+      name: "",
+      number: "",
+      email: "",
+      msg: "",
+    });
+  };
+  const handleChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    Setcontacting({
+      ...contacting,
+      [name]: value,
+    });
   };
   return (
     <>
@@ -26,6 +48,9 @@ export function ContactUs() {
                           className="form-control"
                           id="exampleFormControlInput1"
                           placeholder="Narendra modi"
+                          name="name"
+                          value={contacting.name}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="mb-3">
@@ -39,7 +64,10 @@ export function ContactUs() {
                           type="number"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          placeholder="+919999xxxxxx"
+                          placeholder="98765xxxxx"
+                          name="number"
+                          value={contacting.number}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="mb-3">
@@ -54,6 +82,9 @@ export function ContactUs() {
                           className="form-control"
                           id="exampleFormControlInput1"
                           placeholder="name@example.com"
+                          name="email"
+                          value={contacting.email}
+                          onChange={handleChange}
                         />
                       </div>
                     </div>
@@ -69,6 +100,9 @@ export function ContactUs() {
                         id="exampleFormControlTextarea1"
                         rows={3}
                         defaultValue={""}
+                        name="msg"
+                        value={contacting.msg}
+                        onChange={handleChange}
                       />
                     </div>
                   </p>
