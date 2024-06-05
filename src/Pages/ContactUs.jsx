@@ -21,7 +21,7 @@ export function ContactUs() {
       console.log(contacting);
       setContacting({
         name: "",
-        number: "",
+        number: "+91",
         email: "",
         msg: "",
       });
