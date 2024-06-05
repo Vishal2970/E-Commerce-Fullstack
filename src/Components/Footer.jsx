@@ -1,21 +1,48 @@
+// export function Footer() {
+//   return (
+//     <>
+//       <div className="footer">
+//         <nav class="footer bg-dark border-bottom border-body" data-bs-theme="dark">
+//           <div className="container-fluid">
+//             <a className="navbar-brand" href="/">
+//               <img
+//               src="/Vishal.png"
+//               alt="Logo"
+//               width={200}
+//               height={60}
+//               className="d-inline-block align-text-top"
+//             />
+
+//             </a>
+//           </div>
+//         </nav>
+//       </div>
+//     </>
+//   );
+// }
+
+
+
+import React from 'react';
+import "./css/Footer.css"
+
 export function Footer() {
   return (
     <>
-      <div className="fixed-bottom">
-        <div className="position-absolute bottom-0 start-50 translate-middle-x">
-          <div className="card">
-            <div className="card-header">Quote</div>
-            <div className="card-body">
-              <blockquote className="blockquote mb-0">
-                <p>A well-known quote, contained in a blockquote element.</p>
-                <footer className="blockquote-footer">
-                  Someone famous in{" "}
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote>
-            </div>
+      <div className="footer">
+        <nav className="footer bg-dark border-bottom border-body" data-bs-theme="dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">
+              <img
+                src="/Vishal.png"
+                alt="Logo"
+                width={200}
+                height={60}
+                className="d-inline-block align-text-top"
+              />
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
     </>
   );

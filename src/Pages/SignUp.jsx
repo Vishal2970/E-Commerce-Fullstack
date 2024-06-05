@@ -6,7 +6,7 @@ export function SignUp() {
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [register, Setregister] = useState({
     name: "",
-    number: "",
+    number: "+91",
     email: "",
     password: "",
   });
@@ -27,7 +27,7 @@ export function SignUp() {
     ) {
       Setregister({
         name: "",
-        number: "",
+        number: "+91",
         email: "",
         password: "",
       });
@@ -62,7 +62,7 @@ export function SignUp() {
                 </div>
                 <div className="form-floating mb-3">
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="floatingNumber"
                     placeholder="75708xxxxx"
