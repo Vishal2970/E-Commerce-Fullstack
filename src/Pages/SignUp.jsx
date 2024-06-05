@@ -21,7 +21,7 @@ export function SignUp() {
   const submitHandle = (e) => {
     if (
       !register.name ||
-      !register.number ||
+      register.number.length<13 ||
       !register.email ||
       !register.password
     ) {
