@@ -11,7 +11,11 @@ export function Login() {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!login.email || login.password) {
+    if (!login.email || !login.password) {
+      setLogin({
+        email: "",
+        password: "",
+      });
       alert("enter proper value");
     } else {
       console.log(login);

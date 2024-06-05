@@ -25,6 +25,12 @@ export function SignUp() {
       !register.email ||
       !register.password
     ) {
+      Setregister({
+        name: "",
+        number: "",
+        email: "",
+        password: "",
+      });
       alert("enter proper value");
     } else {
       e.preventDefault();

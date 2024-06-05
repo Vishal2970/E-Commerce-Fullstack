@@ -16,6 +16,12 @@ export function ContactUs() {
       !contacting.email ||
       !contacting.msg
     ) {
+      setContacting({
+        name: "",
+        number: "+91",
+        email: "",
+        msg: "",
+      });
       alert("Enter proper value");
     } else {
       console.log(contacting);
