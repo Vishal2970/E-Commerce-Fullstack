@@ -1,30 +1,42 @@
 import { useState } from "react";
 
 export function ContactUs() {
-  const [contacting, Setcontacting] = useState({
+  const [contacting, setContacting] = useState({
     name: "",
     number: "+91",
     email: "",
     msg: "",
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(contacting);
-    Setcontacting({
-      name: "",
-      number: "",
-      email: "",
-      msg: "",
-    });
+    if (
+      !contacting.name ||
+      contacting.number.length < 13 ||
+      !contacting.email ||
+      !contacting.msg
+    ) {
+      alert("Enter proper value");
+    } else {
+      console.log(contacting);
+      setContacting({
+        name: "",
+        number: "",
+        email: "",
+        msg: "",
+      });
+    }
   };
+
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    Setcontacting({
+    setContacting({
       ...contacting,
       [name]: value,
     });
   };
+
   return (
     <>
       <div className="container p-3">
@@ -47,7 +59,7 @@ export function ContactUs() {
                           type="text"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          placeholder="Narendra modi"
+                          placeholder="Narendra Modi"
                           name="name"
                           value={contacting.name}
                           onChange={handleChange}
@@ -61,7 +73,7 @@ export function ContactUs() {
                           Mobile Number
                         </label>
                         <input
-                          type="number"
+                          type="text"
                           className="form-control"
                           id="exampleFormControlInput1"
                           placeholder="98765xxxxx"
@@ -75,7 +87,7 @@ export function ContactUs() {
                           htmlFor="exampleFormControlInput1"
                           className="form-label"
                         >
-                          Email address
+                          Email Address
                         </label>
                         <input
                           type="email"
@@ -99,14 +111,13 @@ export function ContactUs() {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows={3}
-                        defaultValue={""}
                         name="msg"
                         value={contacting.msg}
                         onChange={handleChange}
                       />
                     </div>
                   </p>
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" className="btn btn-primary">
                     Send
                   </button>
                 </form>
@@ -126,7 +137,7 @@ export function ContactUs() {
                     Email: <a href="mailto:vishal@mail.com">vishal@mail.com</a>
                   </li>
                   <li>Number: 9999966552</li>
-                  <li>Address: Near Mamura, Noida, Uttar Pradesh</li>
+                  <li>Address: Near NTA Mamura, Noida, Uttar Pradesh</li>
                 </ul>
               </div>
             </div>

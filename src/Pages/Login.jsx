@@ -11,13 +11,18 @@ export function Login() {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(login);
-    const data = login.email + "--" + login.password;
-    alert(data);
+    if (!login.email || login.password) {
+      alert("enter proper value");
+    } else {
+      console.log(login);
+      const data = login.email + "--" + login.password;
+      alert(data);
+    }
   };
   const OnchangeHandle = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+
     setLogin({
       ...login,
       [name]: value,

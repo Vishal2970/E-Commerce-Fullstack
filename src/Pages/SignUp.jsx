@@ -4,25 +4,34 @@ import Helmet from "react-helmet";
 
 export function SignUp() {
   const { color } = useParams(); // Use useParams to get the color from the URL
-  const [register,Setregister]=useState({
-    name:"",
-    number:"",
-    email:"",
-    password:""
+  const [register, Setregister] = useState({
+    name: "",
+    number: "",
+    email: "",
+    password: "",
   });
-  const changeHandle=(e)=>{
-    let name=e.target.name;
-    let value=e.target.value;
+  const changeHandle = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
     Setregister({
       ...register,
-      [name]:value
-    })
-  }
-  const submitHandle=(e)=>{
-    e.preventDefault();
-    console.log(register);
-    alert("in console")
-  }
+      [name]: value,
+    });
+  };
+  const submitHandle = (e) => {
+    if (
+      !register.name ||
+      !register.number ||
+      !register.email ||
+      !register.password
+    ) {
+      alert("enter proper value");
+    } else {
+      e.preventDefault();
+      console.log(register);
+      alert("in console");
+    }
+  };
 
   return (
     <>
@@ -81,7 +90,11 @@ export function SignUp() {
                   />
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
-                <button type="button" onClick={submitHandle} className="btn btn-outline-success m-3">
+                <button
+                  type="button"
+                  onClick={submitHandle}
+                  className="btn btn-outline-success m-3"
+                >
                   Register
                 </button>
               </form>
