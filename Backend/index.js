@@ -4,6 +4,8 @@ const app=express();
 const ConnectDB = require('./Connection/ConnectDB');
 const AuthRoutes=require('./Routes/AuthRoutes');
 
+app.use(express.json())
+
 app.use("/api/auth",AuthRoutes);
 
 
