@@ -9,7 +9,8 @@ export function Login() {
     email: "",
     password: "",
   });
-  const handleSubmit = (e) => {
+  const URI = "http://localhost:5000/api/auth/login";
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!login.email || !login.password) {
       setLogin({
@@ -18,9 +19,24 @@ export function Login() {
       });
       alert("enter proper value");
     } else {
-      console.log(login);
-      const data = login.email + "--" + login.password;
-      alert(data);
+      try {
+        const response = await fetch(URI, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(login)
+        });
+        if (response.ok) {
+          alert("Login successfull");
+          setLogin({
+            email: "",
+            password: "",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const OnchangeHandle = (e) => {
