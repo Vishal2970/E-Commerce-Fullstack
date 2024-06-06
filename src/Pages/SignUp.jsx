@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Helmet from "react-helmet";
 
 export function SignUp() {
+  const URI = "http://localhost:5000/api/auth/signup";
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [register, Setregister] = useState({
     name: "",
@@ -18,7 +19,7 @@ export function SignUp() {
       [name]: value,
     });
   };
-  const submitHandle = (e) => {
+  const submitHandle = async(e) => {
     if (
       !register.name ||
       register.number.length<13 ||
@@ -34,8 +35,22 @@ export function SignUp() {
       alert("enter proper value");
     } else {
       e.preventDefault();
-      console.log(register);
-      alert("in console");
+      const response= await fetch(URI,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+        },
+        body:JSON.stringify(register)
+      });
+      if(response.ok){
+        alert("Sign Up Succesfull");
+        Setregister({
+          name: "",
+          number: "+91",
+          email: "",
+          password: "",
+        });
+      }
     }
   };
 

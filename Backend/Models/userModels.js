@@ -28,11 +28,12 @@ userSchema.pre("save",async function(next){
         next();
     }
     try {
+        console.log("salt");
         const saltRound=await bcrypt.genSalt(10);
         const Hash_Password=await bcrypt.hash(user.password,saltRound);
         user.password=Hash_Password;
     } catch (error) {
-        next(error)
+        next(error);
     }
 })
 
