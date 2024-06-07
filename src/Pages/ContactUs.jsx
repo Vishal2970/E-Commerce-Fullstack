@@ -7,8 +7,8 @@ export function ContactUs() {
     email: "",
     msg: "",
   });
-
-  const handleSubmit = (e) => {
+  const URI="http://localhost:5000/api/form/contactUs";
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (
       !contacting.name ||
@@ -24,13 +24,23 @@ export function ContactUs() {
       });
       alert("Enter proper value");
     } else {
-      console.log(contacting);
+      const response=await fetch(URI,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+        },
+        body:JSON.stringify(contacting),
+      });
+      console.log(contacting)
+      if(response.ok){
+      alert("Send Succesfully")
       setContacting({
         name: "",
         number: "+91",
         email: "",
         msg: "",
       });
+    }
     }
   };
 

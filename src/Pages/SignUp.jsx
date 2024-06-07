@@ -50,6 +50,8 @@ export function SignUp() {
           email: "",
           password: "",
         });
+      }else{
+        alert("Nahi hua");
       }
     }
   };

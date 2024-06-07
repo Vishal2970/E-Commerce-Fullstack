@@ -13,10 +13,10 @@ const login=async(req,res)=>{
     try {
         const {email,password}=req.body;
         const userExist=await User.findOne({email});
-        if(!userExist){
-            return res.status(400).json({msg:"Invalid credential"});
-        }
         const val=userExist.passwordMatch(password)
+        if(!userExist && !val){
+            return res.status(400).json({msg:"Invalid credential"});
+        }        
         if(val){
             res.status(200).json({
                 msg:"Login sucesfull",

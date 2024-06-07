@@ -12,7 +12,7 @@ export function Login() {
   const URI = "http://localhost:5000/api/auth/login";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!login.email || !login.password) {
+    if (!login.email && !login.password) {
       setLogin({
         email: "",
         password: "",
@@ -33,6 +33,8 @@ export function Login() {
             email: "",
             password: "",
           });
+        }else{
+          alert("Sahi se daal")
         }
       } catch (error) {
         console.log(error);
