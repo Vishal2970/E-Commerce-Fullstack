@@ -42,8 +42,10 @@ export function SignUp() {
         },
         body:JSON.stringify(register)
       });
+      const data=await response.json();
       if(response.ok){
-        alert("Sign Up Succesfull");
+        alert(data.msg);
+        console.log("Token "+data.token);
         Setregister({
           fullName: "",
           mobile: "+91",
@@ -51,7 +53,7 @@ export function SignUp() {
           password: "",
         });
       }else if(response.status===400){
-        alert("User Already Registered")
+        alert("User Already Registered");
       }else{
         alert(response.statusText)
       }

@@ -17,12 +17,10 @@ const login = async (req, res) => {
     if (!userExist && !val) {
       return res.status(400).json({ msg: "Invalid credential" });
     }
-
-   
-
     if (val) {
       res.status(200).json({
         msg: "Login sucesfull",
+        token:await userExist.generateToken(),
       });
     }
     else{
@@ -47,6 +45,8 @@ const signup = async (req, res) => {
     const create = await User.create({ fullName:fullName, mobile:mobile, email:email, password:password });
     res.status(201).json({
       msg: "you are succesfully registered",
+      token:await create.generateToken(),
+      userId:create._id.toString(),
     });
   } catch (error) {
     res.status(501).json({

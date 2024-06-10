@@ -27,15 +27,16 @@ export function Login() {
           },
           body: JSON.stringify(login)
         });
-        console.log(response);
+        const data=await response.json();
         if (response.ok) {
-          alert("login successful");
+          alert(data.msg);
+          console.log(data.token);
           setLogin({
             email: "",
             password: "",
           });
         }else{
-          alert(response.statusText)
+          alert(data.msg)
         }
       } catch (error) {
         console.log(error);
