@@ -7,8 +7,8 @@ export function ContactUs() {
     email: "",
     msg: "",
   });
-  const URI="http://localhost:5000/api/form/contactUs";
-  const handleSubmit = async(e) => {
+  const URI = "http://localhost:5000/api/form/contactUs";
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !contacting.name ||
@@ -24,26 +24,27 @@ export function ContactUs() {
       });
       alert("Enter proper value");
     } else {
-      const response=await fetch(URI,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
+      const response = await fetch(URI, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify(contacting),
+        body: JSON.stringify(contacting),
       });
-      console.log(contacting)
-      if(response.ok){
-      alert("Send Succesfully")
-      setContacting({
-        name: "",
-        number: "+91",
-        email: "",
-        msg: "",
-      });
-    }
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.msg);
+        setContacting({
+          name: "",
+          number: "+91",
+          email: "",
+          msg: "",
+        });
+      } else {
+        alert(data.msg);
+      }
     }
   };
-
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -52,7 +53,6 @@ export function ContactUs() {
       [name]: value,
     });
   };
-
   return (
     <>
       <div className="container p-3">
@@ -140,7 +140,6 @@ export function ContactUs() {
               </div>
             </div>
           </div>
-
           <div className="col-sm-6">
             <div className="card">
               <div className="card-body">

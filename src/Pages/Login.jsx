@@ -32,8 +32,14 @@ export function Login() {
         if (response.ok) {
           alert(data.msg);
           navigate("/");
-          console.log(data.token);
+          console.log(data.user.fullName);
           localStorage.setItem('token', data.token);
+          const userData={
+            name:data.user.fullName,
+            email:data.user.email,
+            mobile:data.user.mobile,
+          }
+          localStorage.setItem('userData',JSON.stringify(userData));
           setLogin({
             email: "",
             password: "",

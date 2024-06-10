@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <NavBar isVisible={true} />
         <Routes>
-          <Route path="/" element={<Home Name="Vishal" />} />
+          <Route path="/" element={<Home Name="Unknown" />} />
           <Route path="/loginmode" element={<LoginMode />} />
           <Route path="/login/:color" element={<Login />} />
           <Route path="/signup/:color" element={<SignUp />} />

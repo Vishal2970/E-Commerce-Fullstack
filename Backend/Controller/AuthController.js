@@ -8,7 +8,6 @@ const home = async (req, res) => {
     console.error(error);
   }
 };
-
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -19,6 +18,7 @@ const login = async (req, res) => {
     }
     if (val) {
       res.status(200).json({
+        user:userExist,
         msg: "Login sucesfull",
         token:await userExist.generateToken(),
       });
@@ -35,7 +35,7 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   try {
     const { fullName, mobile, email, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const userExist = await User.findOne({ email });
     if (userExist) {
       return res.status(400).json({
