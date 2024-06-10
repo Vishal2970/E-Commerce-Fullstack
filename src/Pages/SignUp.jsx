@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link ,useNavigate} from "react-router-dom";
 import Helmet from "react-helmet";
 
 export function SignUp() {
   const URI = "http://localhost:5000/api/auth/signup";
+  const navigate=useNavigate();
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [register, Setregister] = useState({
     fullName: "",
@@ -46,6 +47,7 @@ export function SignUp() {
       if(response.ok){
         alert(data.msg);
         console.log("Token "+data.token);
+        navigate("/loginmode")
         Setregister({
           fullName: "",
           mobile: "+91",

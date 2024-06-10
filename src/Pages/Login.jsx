@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import React, { useState} from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 
 export function Login() {
+  const navigate=useNavigate()
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [login, setLogin] = useState({
     email: "",
@@ -30,7 +31,9 @@ export function Login() {
         const data=await response.json();
         if (response.ok) {
           alert(data.msg);
+          navigate("/");
           console.log(data.token);
+          localStorage.setItem('token', data.token);
           setLogin({
             email: "",
             password: "",
