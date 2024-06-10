@@ -6,8 +6,8 @@ export function SignUp() {
   const URI = "http://localhost:5000/api/auth/signup";
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [register, Setregister] = useState({
-    name: "",
-    number: "+91",
+    fullName: "",
+    mobile: "+91",
     email: "",
     password: "",
   });
@@ -21,14 +21,14 @@ export function SignUp() {
   };
   const submitHandle = async(e) => {
     if (
-      !register.name ||
-      register.number.length<13 ||
+      !register.fullName ||
+      register.mobile.length<13 ||
       !register.email ||
       !register.password
     ) {
       Setregister({
-        name: "",
-        number: "+91",
+        fullName: "",
+        mobile: "+91",
         email: "",
         password: "",
       });
@@ -45,13 +45,15 @@ export function SignUp() {
       if(response.ok){
         alert("Sign Up Succesfull");
         Setregister({
-          name: "",
-          number: "+91",
+          fullName: "",
+          mobile: "+91",
           email: "",
           password: "",
         });
+      }else if(response.status===400){
+        alert("User Already Registered")
       }else{
-        alert("Nahi hua");
+        alert(response.statusText)
       }
     }
   };
@@ -71,9 +73,9 @@ export function SignUp() {
                     className="form-control"
                     id="floatingFullName"
                     placeholder="Vishal Agrahari"
-                    name="name"
+                    name="fullName"
                     onChange={changeHandle}
-                    value={register.name}
+                    value={register.fullName}
                   />
                   <label htmlFor="floatingFullName">Full Name</label>
                 </div>
@@ -83,9 +85,9 @@ export function SignUp() {
                     className="form-control"
                     id="floatingNumber"
                     placeholder="75708xxxxx"
-                    name="number"
+                    name="mobile"
                     onChange={changeHandle}
-                    value={register.number}
+                    value={register.mobile}
                   />
                   <label htmlFor="floatingNumber">Mobile Number</label>
                 </div>

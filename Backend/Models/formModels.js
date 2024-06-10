@@ -19,5 +19,5 @@ const formSchema=new mongoose.Schema({
     }
 });
 
-const form=new mongoose.model("form",formSchema);
+const form=new mongoose.model("contacts",formSchema);
 module.exports=form;

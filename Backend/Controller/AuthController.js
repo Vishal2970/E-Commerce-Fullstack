@@ -1,49 +1,59 @@
-const User=require("../Models/userModels");
-const bcrypt =require("bcrypt")
+const User = require("../Models/userModels");
+const bcrypt = require("bcrypt");
 
-const home =async(req,res)=>{
-    try {
-        res.status(200).send("Hello Vishal From home");
-    } catch (error) {
-        console.error(error)
+const home = async (req, res) => {
+  try {
+    res.status(200).send("Hello Vishal From home");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userExist = await User.findOne({ email });
+
+    if (!userExist && !val) {
+      return res.status(400).json({ msg: "Invalid credential" });
     }
-}
 
-const login=async(req,res)=>{
-    try {
-        const {email,password}=req.body;
-        const userExist=await User.findOne({email});
-        const val=userExist.passwordMatch(password)
-        if(!userExist && !val){
-            return res.status(400).json({msg:"Invalid credential"});
-        }        
-        if(val){
-            res.status(200).json({
-                msg:"Login sucesfull",
-            })
-        }
+    const val = await userExist.passwordMatch(password);
 
-    } catch (error) {
-        console.error(error);
-    }    
-}
-const signup = async (req,res)=>{
-    try {
-        const {fullname,mobile,email,password}=req.body;
-        const userExist = await User.findOne({email});
-        if(userExist){
-            return res.status(400).json({
-                msg:"user already exist"
-            })
-        }
-        const create=await User.create({fullname,mobile,email,password});
-        res.status(400).json({
-            msg:"you are succesfully registered"
+    if (val) {
+      res.status(200).json({
+        msg: "Login sucesfull",
+      });
+    }
+    else{
+        res.status(401).json({
+            msg:"wrong credential"
         })
-    } catch (error) {
-        console.error(error);
     }
-}
+  } catch (error) {
+    console.error(error);
+  }
+};
+const signup = async (req, res) => {
+  try {
+    const { fullName, mobile, email, password } = req.body;
+    console.log(req.body);
+    const userExist = await User.findOne({ email });
+    if (userExist) {
+      return res.status(400).json({
+        msg: "user already exist",
+      });
+    }
+    const create = await User.create({ fullName:fullName, mobile:mobile, email:email, password:password });
+    res.status(201).json({
+      msg: "you are succesfully registered",
+    });
+  } catch (error) {
+    res.status(501).json({
+        msg:"Not registered"
+    })
+    console.error(error);
+  }
+};
 
-
-module.exports= {home,login,signup};
+module.exports = { home, login, signup };
