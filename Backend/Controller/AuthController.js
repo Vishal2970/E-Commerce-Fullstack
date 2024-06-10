@@ -16,9 +16,14 @@ const login = async (req, res) => {
     if (!userExist && !val) {
       return res.status(400).json({ msg: "Invalid credential" });
     }
+    const data={
+      name:userExist.fullName,
+      email:userExist.email,
+      mobile:userExist.mobile
+    }
     if (val) {
       res.status(200).json({
-        user:userExist,
+        user:data,
         msg: "Login sucesfull",
         token:await userExist.generateToken(),
       });
