@@ -3,7 +3,7 @@ import React, { useState} from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 
-export function Login() {
+export function Login({description,keywords,author,title}) {
   const navigate=useNavigate()
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [login, setLogin] = useState({
@@ -64,6 +64,13 @@ export function Login() {
   return (
     <>
       <Helmet bodyAttributes={{ style: `background-color: #${color}` }} />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <title>{title}</title>
+      </Helmet>
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="card w-100 mx-3" style={{ maxWidth: "28rem" }}>
           <div className="card-body">

@@ -1,6 +1,6 @@
-import { useState } from "react";
-
-export function ContactUs() {
+import React,{useState} from "react";
+import { Helmet } from "react-helmet";
+export function ContactUs({ description, keywords, author, title }) {
   const [contacting, setContacting] = useState({
     name: "",
     number: "+91",
@@ -55,6 +55,13 @@ export function ContactUs() {
   };
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <title>{title}</title>
+      </Helmet>
       <div className="container p-3">
         <div className="row">
           <div className="col-sm-6 mb-3 mb-sm-0">

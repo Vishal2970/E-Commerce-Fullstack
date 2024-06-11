@@ -8,21 +8,23 @@ import { SignUp } from "./Pages/SignUp";
 import { About } from "./Pages/About";
 import { ContactUs } from "./Pages/ContactUs";
 import { LoginMode } from "./Pages/LoginMode";
+import PageNotFound from "./Pages/PageNotFound";
 function App() {
   return (
     <>
       <BrowserRouter>
         <NavBar isVisible={true} />
         <Routes>
-          <Route path="/" element={<Home Name="Unknown" />} />
-          <Route path="/loginmode" element={<LoginMode />} />
-          <Route path="/login/:color" element={<Login />} />
-          <Route path="/signup/:color" element={<SignUp />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/" element={<Home Name="Unknown" title="Home" />} />
+          <Route path="/loginmode" element={<LoginMode title="Login - Options" />} />
+          <Route path="/login/:color" element={<Login title="Login" />} />
+          <Route path="/signup/:color" element={<SignUp title="Register" />} />
+          <Route path="/about" element={<About title="About" />} />
+          <Route path="/contactus" element={<ContactUs title="Contact - Us" />} />
+          <Route path="*" element={<PageNotFound title="Page Not Found" />} />
         </Routes>
       </BrowserRouter>
-      <Footer color='#6322f0'/>
+      <Footer color='#6322f0' />
     </>
   );
 }

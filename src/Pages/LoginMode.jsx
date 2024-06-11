@@ -2,10 +2,17 @@ import React from "react";
 import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 
-export function LoginMode() {
+export function LoginMode({ description, keywords, author, title }) {
   return (
     <>
       <Helmet bodyAttributes={{ style: "background-color: #FADCAB" }} />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <title>{title}</title>
+      </Helmet>
       <div className="position-absolute top-50 start-50 translate-middle">
         <div className="row">
           <div className="col-sm-6 mb-3 mb-sm-0 p-2">

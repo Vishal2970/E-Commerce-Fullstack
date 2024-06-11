@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useParams, Link ,useNavigate} from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Helmet from "react-helmet";
 
-export function SignUp() {
+export function SignUp({ description, keywords, author, title }) {
   const URI = "http://localhost:5000/api/auth/signup";
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [register, Setregister] = useState({
     fullName: "",
@@ -20,10 +20,10 @@ export function SignUp() {
       [name]: value,
     });
   };
-  const submitHandle = async(e) => {
+  const submitHandle = async (e) => {
     if (
       !register.fullName ||
-      register.mobile.length<13 ||
+      register.mobile.length < 13 ||
       !register.email ||
       !register.password
     ) {
@@ -36,17 +36,17 @@ export function SignUp() {
       alert("enter proper value");
     } else {
       e.preventDefault();
-      const response= await fetch(URI,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
+      const response = await fetch(URI, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify(register)
+        body: JSON.stringify(register)
       });
-      const data=await response.json();
-      if(response.ok){
+      const data = await response.json();
+      if (response.ok) {
         alert(data.msg);
-        console.log("Token "+data.token);
+        console.log("Token " + data.token);
         navigate("/loginmode")
         Setregister({
           fullName: "",
@@ -54,9 +54,9 @@ export function SignUp() {
           email: "",
           password: "",
         });
-      }else if(response.status===400){
+      } else if (response.status === 400) {
         alert("User Already Registered");
-      }else{
+      } else {
         alert(response.statusText)
       }
     }
@@ -65,6 +65,13 @@ export function SignUp() {
   return (
     <>
       <Helmet bodyAttributes={{ style: `background-color: #${color}` }} />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <title>{title}</title>
+      </Helmet>
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="card w-100 mx-3" style={{ maxWidth: "28rem" }}>
           <div className="card-body">
