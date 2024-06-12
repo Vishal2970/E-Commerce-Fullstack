@@ -11,12 +11,6 @@ export function Login({description,keywords,author,title}) {
     password: "",
   });
   const URI = "http://localhost:5000/api/auth/login";
-  // Axios
-  // const handleSubmit = async(e)=>{
-  //   e.preventDefault();
-  //   console.log(login);
-  // }
-  // Fetch
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!login.email || !login.password) {
@@ -38,13 +32,14 @@ export function Login({description,keywords,author,title}) {
         if (response.ok) {
           alert(data.msg);
           navigate("/");
-          console.log(data.user.fullName);
+          console.log(data.user.name);
           localStorage.setItem('token', data.token);
           const userData={
-            name:data.user.fullName,
+            name:data.user.name,
             email:data.user.email,
             mobile:data.user.mobile,
           }
+          console.log(userData);
           localStorage.setItem('userData',JSON.stringify(userData));
           setLogin({
             email: "",
