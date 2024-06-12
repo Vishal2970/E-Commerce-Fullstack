@@ -56,13 +56,13 @@ export function Home({ title, description, keywords, author, Namee }) {
       {Name ? (
         <>
           <h1>Hello {Name}</h1>
-          <h2>{email}</h2>
-          <h2>{mobile}</h2>
+          <h2>Email id : {email}</h2>
+          <h2>Mobile No.:{mobile}</h2>
         </>
       ) : (
         <h1>Hello {Namee}, please login first</h1>
       )}
-      <h2>{auth.token}</h2>
+      {/* <h2>{auth.token}</h2> */}
     </>
   );
 }
