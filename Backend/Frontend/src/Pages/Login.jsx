@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../Context/AuthContext";
 
 export function Login({ description, keywords, author, title }) {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export function Login({ description, keywords, author, title }) {
     email: "",
     password: "",
   });
+  const [auth,setAuth]=useAuthContext();
   const URI = "http://localhost:5000/api/auth/login";
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +34,6 @@ export function Login({ description, keywords, author, title }) {
         const data = await response.json();
         if (response.ok) {
           toast.success(data.msg);
-          navigate("/");
           console.log(data.user.name);
           localStorage.setItem("token", data.token);
           const userData = {
@@ -40,6 +41,12 @@ export function Login({ description, keywords, author, title }) {
             email: data.user.email,
             mobile: data.user.mobile,
           };
+          setAuth({
+            ...auth,
+            user:data.user.name,
+            token:data.token,
+          })
+          navigate("/");
           console.log(userData);
           localStorage.setItem("userData", JSON.stringify(userData));
           setLogin({

@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet";
+import { useAuthContext } from "../Context/AuthContext";
 
 export function Home({ title, description, keywords, author, Name }) {
   const userData = JSON.parse(localStorage.getItem("userData")) || {};
   const { name, email, mobile } = userData;
-
+  const [auth]=useAuthContext();
   return (
     <>
       <Helmet>
@@ -22,8 +23,7 @@ export function Home({ title, description, keywords, author, Name }) {
       ) : (
         <h1>Hello {Name} please login first</h1>
       )}
-
-      
+      <h1>{JSON.stringify(auth,null,4)}</h1>      
     </>
   );
 }
