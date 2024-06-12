@@ -9,10 +9,12 @@ import { About } from "./Pages/About";
 import { ContactUs } from "./Pages/ContactUs";
 import { LoginMode } from "./Pages/LoginMode";
 import PageNotFound from "./Pages/PageNotFound";
+import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <>
       <BrowserRouter>
+      <Toaster/>
         <NavBar isVisible={true} />
         <div className="content">
           <Routes>

@@ -20,8 +20,10 @@ export function Home({ title, description, keywords, author, Name }) {
           <h2>{mobile}</h2>
         </>
       ) : (
-        <h1>Hello {Name}</h1>
+        <h1>Hello {Name} please login first</h1>
       )}
+
+      
     </>
   );
 }

@@ -1,10 +1,11 @@
-import { Link,useNavigate } from "react-router-dom";
-import React, { useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
+import toast from "react-hot-toast";
 
-export function Login({description,keywords,author,title}) {
-  const navigate=useNavigate()
+export function Login({ description, keywords, author, title }) {
+  const navigate = useNavigate();
   const { color } = useParams(); // Use useParams to get the color from the URL
   const [login, setLogin] = useState({
     email: "",
@@ -18,7 +19,7 @@ export function Login({description,keywords,author,title}) {
         email: "",
         password: "",
       });
-      alert("enter proper value");
+      toast.error("enter proper value");
     } else {
       try {
         const response = await fetch(URI, {
@@ -26,30 +27,30 @@ export function Login({description,keywords,author,title}) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(login)
+          body: JSON.stringify(login),
         });
-        const data=await response.json();
+        const data = await response.json();
         if (response.ok) {
-          alert(data.msg);
+          toast.success(data.msg);
           navigate("/");
           console.log(data.user.name);
-          localStorage.setItem('token', data.token);
-          const userData={
-            name:data.user.name,
-            email:data.user.email,
-            mobile:data.user.mobile,
-          }
+          localStorage.setItem("token", data.token);
+          const userData = {
+            name: data.user.name,
+            email: data.user.email,
+            mobile: data.user.mobile,
+          };
           console.log(userData);
-          localStorage.setItem('userData',JSON.stringify(userData));
+          localStorage.setItem("userData", JSON.stringify(userData));
           setLogin({
             email: "",
             password: "",
           });
-        }else{
-          alert(data.msg)
+        } else {
+          toast.error(data.msg);
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error);
       }
     }
   };

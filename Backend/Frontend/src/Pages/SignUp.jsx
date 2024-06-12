@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Helmet from "react-helmet";
+import toast from "react-hot-toast";
 
 export function SignUp({ description, keywords, author, title }) {
   const URI = "http://localhost:5000/api/auth/signup";
@@ -33,7 +34,7 @@ export function SignUp({ description, keywords, author, title }) {
         email: "",
         password: "",
       });
-      alert("enter proper value");
+      toast.error("enter proper value");
     } else {
       e.preventDefault();
       const response = await fetch(URI, {
@@ -45,7 +46,7 @@ export function SignUp({ description, keywords, author, title }) {
       });
       const data = await response.json();
       if (response.ok) {
-        alert(data.msg);
+        toast.success(data.msg)
         console.log("Token " + data.token);
         navigate("/loginmode")
         Setregister({
@@ -55,9 +56,9 @@ export function SignUp({ description, keywords, author, title }) {
           password: "",
         });
       } else if (response.status === 400) {
-        alert("User Already Registered");
+        toast.error("User Already Registered");
       } else {
-        alert(response.statusText)
+        toast.error(response.statusText);
       }
     }
   };
