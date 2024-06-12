@@ -11,6 +11,16 @@ export function NavBar(props) {
     close.click();
     navigate("/loginmode");
   };
+  const isAuthenticated = Boolean(localStorage.getItem('auth')); // Check for auth info in local storage
+
+  const handlePath =()=>{
+    if(isAuthenticated){
+      navigate("/cart")
+    }else{
+      const modal = new window.bootstrap.Modal(document.getElementById('exampleModal'));
+      modal.show(); // Show the modal if not authenticated
+    }
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -84,8 +94,9 @@ export function NavBar(props) {
           <button
             type="button"
             className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            // data-bs-toggle="modal"
+            // data-bs-target="#exampleModal"
+            onClick={handlePath}
           >
             <img src="/cart.png" alt="Cart" width="40" height="40" />
           </button>

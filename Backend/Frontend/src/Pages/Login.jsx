@@ -12,7 +12,7 @@ export function Login({ description, keywords, author, title }) {
     email: "",
     password: "",
   });
-  const [auth,setAuth]=useAuthContext();
+  const [auth, setAuth] = useAuthContext();
   const URI = "http://localhost:5000/api/auth/login";
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,21 +34,23 @@ export function Login({ description, keywords, author, title }) {
         const data = await response.json();
         if (response.ok) {
           toast.success(data.msg);
-          console.log(data.user.name);
-          localStorage.setItem("token", data.token);
-          const userData = {
-            name: data.user.name,
-            email: data.user.email,
-            mobile: data.user.mobile,
-          };
+          console.log(data);
+          // const userData = {
+          //   name: data.user.name,
+          //   email: data.user.email,
+          //   mobile: data.user.mobile,
+          // };
           setAuth({
             ...auth,
-            userData,
-            token:data.token,
+            user:data.user,
+            token: data.token,
           })
+          console.log(JSON.stringify(auth));
+          localStorage.setItem("auth",JSON.stringify(auth));
+          // console.log(auth);
+          // localStorage.setItem("auth", JSON.stringify(auth));
           navigate("/");
-          console.log(userData);
-          // localStorage.setItem("userData", JSON.stringify(userData));
+          // console.log(userData);
           setLogin({
             email: "",
             password: "",
@@ -56,7 +58,42 @@ export function Login({ description, keywords, author, title }) {
         } else {
           toast.error(data.msg);
         }
-      } catch (error) {
+      }
+      // try {
+      //   const response = await fetch(URI, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(login),
+      //   });
+      //   const data = await response.json();
+      //   if (response.ok) {
+      //     toast.success(data.msg);
+      //     // console.log(data.user.name);
+      //     const userData = {
+      //       name: data.user.name,
+      //       email: data.user.email,
+      //       mobile: data.user.mobile,
+      //     };
+      //     const newAuth = {
+      //       ...auth,
+      //       userData,
+      //       token: data.token,
+      //     };
+      //     setAuth(newAuth);
+      //     console.log( "auth  "+JSON.stringify(auth));
+      //     console.log( "newAuth  "+JSON.stringify(newAuth));
+      //     localStorage.setItem("auth", JSON.stringify(newAuth)); // Stringify the new auth object before storing
+      //     navigate("/");
+      //     setLogin({
+      //       email: "",
+      //       password: "",
+      //     });
+      //   } else {
+      //     toast.error(data.msg);
+      //   }
+      catch (error) {
         toast.error(error);
       }
     }
