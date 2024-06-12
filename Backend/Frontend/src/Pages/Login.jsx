@@ -43,12 +43,12 @@ export function Login({ description, keywords, author, title }) {
           };
           setAuth({
             ...auth,
-            user:data.user.name,
+            userData,
             token:data.token,
           })
           navigate("/");
           console.log(userData);
-          localStorage.setItem("userData", JSON.stringify(userData));
+          // localStorage.setItem("userData", JSON.stringify(userData));
           setLogin({
             email: "",
             password: "",
