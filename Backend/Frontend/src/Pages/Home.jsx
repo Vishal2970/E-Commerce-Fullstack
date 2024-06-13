@@ -37,7 +37,7 @@ import { Helmet } from "react-helmet";
 import { useAuthContext } from "../Context/AuthContext";
 
 export function Home({ title, description, keywords, author, Namee }) {
-  const [auth] = useAuthContext();
+  const {auth} = useAuthContext();
 
   // Safely access userData properties
   const Name = auth.userData?.name;

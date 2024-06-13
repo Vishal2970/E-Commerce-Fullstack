@@ -2,15 +2,15 @@ import { useState, useContext, createContext } from "react";
 
 const AuthContext = createContext();
 
-const AuthProvider = (props) => {
+const AuthProvider = ({children}) => {
   const [auth, setAuth] = useState({
     user: null,
-    token: ""
+    token: null
   });
 
   return (
-    <AuthContext.Provider value={[auth, setAuth]}>
-        {props.children}
+    <AuthContext.Provider value={{auth, setAuth}}>
+        {children}
     </AuthContext.Provider>
   );
 };
