@@ -20,7 +20,7 @@ function App() {
         <NavBar />
         <div className="content">
           <Routes>
-            <Route path="/" element={<Home Name="Unknown" title="Home" />} />
+            <Route path="/" element={<Home Namee="Unknown" title="Home" />} />
             <Route path="/loginmode" element={<LoginMode title="Login - Options" />} />
             <Route path="/login/:color" element={<Login title="Login" />} />
             <Route path="/signup/:color" element={<SignUp title="Register" />} />

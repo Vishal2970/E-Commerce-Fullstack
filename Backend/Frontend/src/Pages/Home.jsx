@@ -3,13 +3,21 @@ import { Helmet } from "react-helmet";
 import { useAuthContext } from "../Context/AuthContext";
 
 export function Home({ title, description, keywords, author, Namee }) {
-  const {auth} = useAuthContext();
-
+  const { auth, setAuth } = useAuthContext();
   // Safely access userData properties
-  const Name = auth.userData?.name;
-  const email = auth.userData?.email;
-  const mobile = auth.userData?.mobile;
+  const Name = auth.user?.name;
+  const email = auth.user?.email;
+  const mobile = auth.user?.mobile;
 
+  const handleLogout = () => {
+    setAuth({
+      user: null,
+      token: null,
+    });
+    localStorage.removeItem("auth");
+  };
+
+  const isAuthenticated = Boolean(auth.token);
   return (
     <>
       <Helmet>
@@ -28,7 +36,7 @@ export function Home({ title, description, keywords, author, Namee }) {
       ) : (
         <h1>Hello {Namee}, please login first</h1>
       )}
-      {/* <h2>{auth.token}</h2> */}
+      {isAuthenticated && <button onClick={handleLogout}>Log Out</button>}
     </>
   );
 }
