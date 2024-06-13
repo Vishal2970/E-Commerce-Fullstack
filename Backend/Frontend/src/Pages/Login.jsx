@@ -34,7 +34,7 @@ export function Login({ description, keywords, author, title }) {
         const data = await response.json();
         if (response.ok) {
           toast.success(data.msg);
-          console.log(data);
+          console.log(data.user);
           // const userData = {
           //   name: data.user.name,
           //   email: data.user.email,
