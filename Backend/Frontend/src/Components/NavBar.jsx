@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../Context/AuthContext";
 
-export function NavBar(props) {
+export function NavBar() {
   const location = useLocation();
   const currentPath = location.pathname;
   const navigate = useNavigate();

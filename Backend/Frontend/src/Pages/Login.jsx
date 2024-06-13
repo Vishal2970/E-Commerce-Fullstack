@@ -12,7 +12,7 @@ export function Login({ description, keywords, author, title }) {
     email: "",
     password: "",
   });
-  const { auth, setAuth } = useAuthContext();
+  const { setAuth } = useAuthContext();
   const URI = "http://localhost:5000/api/auth/login";
 
   const handleSubmit = async (e) => {

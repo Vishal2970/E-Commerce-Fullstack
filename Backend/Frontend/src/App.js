@@ -10,12 +10,14 @@ import { ContactUs } from "./Pages/ContactUs";
 import { LoginMode } from "./Pages/LoginMode";
 import PageNotFound from "./Pages/PageNotFound";
 import { Toaster } from 'react-hot-toast';
+import Profile from "./Pages/Profile";
+import Cart from "./Pages/Cart";
 function App() {
   return (
     <>
       <BrowserRouter>
       <Toaster/>
-        <NavBar isVisible={true} />
+        <NavBar />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home Name="Unknown" title="Home" />} />
@@ -23,6 +25,8 @@ function App() {
             <Route path="/login/:color" element={<Login title="Login" />} />
             <Route path="/signup/:color" element={<SignUp title="Register" />} />
             <Route path="/about" element={<About title="About" />} />
+            <Route path="/profile" element={<Profile title="Profile" />} />
+            <Route path="/cart" element={<Cart title="Cart" />} />
             <Route path="/contactus" element={<ContactUs title="Contact - Us" />} />
             <Route path="*" element={<PageNotFound title="Page Not Found" />} />
           </Routes>
