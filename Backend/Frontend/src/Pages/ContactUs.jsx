@@ -1,12 +1,101 @@
-import React,{useState} from "react";
+// import React,{useState} from "react";
+// import { Helmet } from "react-helmet";
+// import { useAuthContext } from "../Context/AuthContext";
+// export function ContactUs({ description, keywords, author, title }) {
+//   const {auth}=useAuthContext();
+//   {auth.user?(<>
+//   const [contacting, setContacting] = useState({
+//     name: auth.user.name,
+//     number: auth.user.mobile,
+//     email: auth.user.email,
+//     msg: "",
+//   });
+//   </>):(
+//     <>
+//     const [contacting, setContacting] = useState({
+//     name: "",
+//     number: "+91",
+//     email: "",
+//     msg: "",
+//   });
+//     </>
+//   )}
+
+//   const URI = "http://localhost:5000/api/form/contactUs";
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (
+//       !contacting.name ||
+//       contacting.number.length < 13 ||
+//       !contacting.email ||
+//       !contacting.msg
+//     ) {
+//       setContacting({
+//         name: "",
+//         number: "+91",
+//         email: "",
+//         msg: "",
+//       });
+//       alert("Enter proper value");
+//     } else {
+//       const response = await fetch(URI, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(contacting),
+//       });
+//       const data = await response.json();
+//       if (response.ok) {
+//         alert(data.msg);
+//         setContacting({
+//           name: "",
+//           number: "+91",
+//           email: "",
+//           msg: "",
+//         });
+//       } else {
+//         alert(data.msg);
+//       }
+//     }
+//   };
+
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useAuthContext } from "../Context/AuthContext";
+
 export function ContactUs({ description, keywords, author, title }) {
-  const [contacting, setContacting] = useState({
-    name: "",
-    number: "+91",
-    email: "",
-    msg: "",
-  });
+  const { auth } = useAuthContext();
+
+  // Initialize state based on whether auth.user is defined
+  const initialContactState = auth.user
+    ? {
+        name: auth.user.name,
+        number: auth.user.mobile || "+91",
+        email: auth.user.email,
+        msg: "",
+      }
+    : {
+        name: "",
+        number: "+91",
+        email: "",
+        msg: "",
+      };
+
+  const [contacting, setContacting] = useState(initialContactState);
+
+  // useEffect(() => {
+  //   // Update state if auth.user changes
+  //   if (auth.user) {
+  //     setContacting({
+  //       name: auth.user.name,
+  //       number: auth.user.mobile || "+91",
+  //       email: auth.user.email,
+  //       msg: "",
+  //     });
+  //   }
+  // }, [auth.user]);
+
   const URI = "http://localhost:5000/api/form/contactUs";
   const handleSubmit = async (e) => {
     e.preventDefault();

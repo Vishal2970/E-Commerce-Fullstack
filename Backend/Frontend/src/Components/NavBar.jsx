@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../Context/AuthContext";
 
 export function NavBar() {
@@ -29,9 +29,9 @@ export function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src="/Spotmarket-logo-profile.jpg" alt="Logo" width="100" height="60" />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -50,16 +50,16 @@ export function NavBar() {
           >
             <li className="nav-item">
               {currentPath !== "/About" && (
-                <a className="btn btn-outline-dark m-2" aria-current="page" href="/About">
+                <Link className="btn btn-outline-dark m-2" aria-current="page" to="/About">
                   About
-                </a>
+                </Link>
               )}
             </li>
             <li className="nav-item">
               {currentPath !== "/contactus" && (
-                <a className="btn btn-outline-dark m-2" href="/contactus">
+                <Link className="btn btn-outline-dark m-2" to="/contactus">
                   Contact-US
-                </a>
+                </Link>
               )}
             </li>
           </ul>
@@ -74,9 +74,9 @@ export function NavBar() {
             </button>
           )}
           {isAuthenticated && (
-            <a className="navbar-brand m-3" href="/profile">
+            <Link className="navbar-brand m-3" to="/profile">
               <img src="/profile.jpg" alt="Profile" width="55" height="55" />
-            </a>
+            </Link>
           )}
           <div
             className="modal fade"
