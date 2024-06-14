@@ -1,13 +1,13 @@
 const User = require("../Models/userModels");
 const bcrypt = require("bcrypt");
 
-const home = async (req, res) => {
-  try {
-    res.status(200).send("Hello Vishal From home");
-  } catch (error) {
-    console.error(error);
-  }
-};
+// const home = async (req, res) => {
+//   try {
+//     res.status(200).send("Hello Vishal From home");
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -61,4 +61,4 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = { home, login, signup };
+module.exports = {  login, signup };//home
