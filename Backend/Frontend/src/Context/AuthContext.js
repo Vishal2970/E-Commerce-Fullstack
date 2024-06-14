@@ -8,7 +8,8 @@ const AuthProvider = ({ children }) => {
     token: null
   });
   useEffect(() => {
-    const data = localStorage.getItem("auth")
+    // const data = localStorage.getItem("auth")
+    const data = sessionStorage.getItem("auth")
     if (data) {
       const parseData = JSON.parse(data);
       setAuth({

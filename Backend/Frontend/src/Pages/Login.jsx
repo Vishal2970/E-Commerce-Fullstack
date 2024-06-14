@@ -39,7 +39,11 @@ export function Login({ description, keywords, author, title }) {
             user: data.user,
             token: data.token,
           });
-          localStorage.setItem(
+          // localStorage.setItem(
+          //   "auth",
+          //   JSON.stringify({ user: data.user, token: data.token })
+          // );
+          sessionStorage.setItem(
             "auth",
             JSON.stringify({ user: data.user, token: data.token })
           );

@@ -16,7 +16,8 @@ const Profile = ({ description, keywords, author, title }) => {
       user: null,
       token: null,
     });
-    localStorage.removeItem("auth");
+    // localStorage.removeItem("auth");
+    sessionStorage.removeItem("auth");
     navigate("/")
   };
 
