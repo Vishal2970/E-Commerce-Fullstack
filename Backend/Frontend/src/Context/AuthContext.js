@@ -5,21 +5,19 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     user: null,
-    token: null
+    token: null,
   });
   useEffect(() => {
     // const data = localStorage.getItem("auth")
-    const data = sessionStorage.getItem("auth")
+    const data = sessionStorage.getItem("auth");
     if (data) {
-      const parseData = JSON.parse(data);
+      const parsedData = JSON.parse(data);
       setAuth({
-        ...auth,
-        user: parseData.user,
-        token: parseData.token
-      })
+        user: parsedData.user,
+        token: parsedData.token,
+      });
     }
-    //eslint-disable-next-line
-  })
+  }, []);
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}

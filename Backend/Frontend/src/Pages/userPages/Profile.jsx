@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { useAuthContext } from "../Context/AuthContext";
+import { useAuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 
