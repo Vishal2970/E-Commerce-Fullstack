@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
@@ -12,6 +12,7 @@ export function Login({ description, keywords, author, title }) {
     email: "",
     password: "",
   });
+  const location = useLocation();
   const { setAuth } = useAuthContext();
   const URI = "http://localhost:5000/api/auth/login";
 
@@ -47,7 +48,7 @@ export function Login({ description, keywords, author, title }) {
             "auth",
             JSON.stringify({ user: data.user, token: data.token })
           );
-          navigate("/");
+          navigate(location.state||"/");
           setLogin({
             email: "",
             password: "",
