@@ -7,7 +7,7 @@ import Spinner from "../Spinner";
 const PrivateRoute = () => {
   const URI = "http://localhost:5000/api/auth/user_auth";
   const [ok, setOk] = useState(false);
-  const { auth, setAuth } = useAuthContext();
+  const { auth } = useAuthContext();
   useEffect(() => {
     const authCheck = async () => {
       const res = await axios.get(URI, {

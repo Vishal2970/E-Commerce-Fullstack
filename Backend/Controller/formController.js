@@ -1,6 +1,5 @@
 const form=require("../Models/formModels");
 
-
 const formSend=async(req,res)=>{
     try {
         // console.log(req.body);

@@ -18,6 +18,5 @@ const formSchema=new mongoose.Schema({
         require:true,
     }
 });
-
 const form=new mongoose.model("contacts",formSchema);
 module.exports=form;
