@@ -245,7 +245,7 @@ export function ContactUs({ description, keywords, author, title }) {
                 </p>
                 <ul className="list-unstyled">
                   <li>
-                    Email: <a href="mailto:vishal@mail.com">vishal@mail.com</a>
+                    Email: <a href="mailto:vishal@mail.com">vishal@gmail.com</a>
                   </li>
                   <li>Number: 9999966552</li>
                   <li>Address: Near NTA Mamura, Noida, Uttar Pradesh</li>
