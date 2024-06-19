@@ -25,106 +25,12 @@ export function Home({ title, description, keywords, author, Namee }) {
       )}
       {/* Start */}
 
+
       <div className="container text-center">
         <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
           <div className="col">
             <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3">
-              <Card />
+              <Card imge="/profile.jpg" title="Vishal" descr="Hello I am Vishal"/>
             </div>
           </div>
         </div>
@@ -132,3 +38,99 @@ export function Home({ title, description, keywords, author, Namee }) {
     </>
   );
 }
+
+
+
+
+
+
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>
+// <div className="col">
+// <div className="p-3">
+//   <Card />
+// </div>
+// </div>

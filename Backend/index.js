@@ -5,6 +5,8 @@ const cors = require("cors");
 const ConnectDB = require("./Connection/ConnectDB");
 const AuthRoutes = require("./Routes/AuthRoutes");
 const formRoutes = require("./Routes/formRoutes");
+const ProductRoutes = require("./Routes/ProductRoutes");
+
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -14,8 +16,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+//for authentication
 app.use("/api/auth", AuthRoutes);
+//for contact us
 app.use("/api/form", formRoutes);
+//for product adding 
+app.use("/api/product", ProductRoutes);
+
 
 const port = process.env.PORT;
 ConnectDB().then(() => {
