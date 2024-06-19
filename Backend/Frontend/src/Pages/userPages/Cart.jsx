@@ -1,7 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
+import { useAuthContext } from "../../Context/AuthContext";
 
 const Cart = ({ description, keywords, author, title }) => {
+  const { auth } = useAuthContext();
+  const Name = auth.user?.name;
   return (
     <>
       <Helmet>
@@ -12,7 +15,7 @@ const Cart = ({ description, keywords, author, title }) => {
         <title>{title}</title>
       </Helmet>
       <div>
-        <h1>Hello Vishal From Cart</h1>
+        <h1>Hello {Name} From Cart</h1>        
       </div>
     </>
   );
