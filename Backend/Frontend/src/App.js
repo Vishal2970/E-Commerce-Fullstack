@@ -13,6 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import Profile from "./Pages/userPages/Profile";
 import Cart from "./Pages/userPages/Cart";
 import PrivateRoute from "./Components/Routes/PrivateRoute";
+import AddItems from "./Pages/adminPages/AddItems";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         <NavBar />
         <div className="content">
           <Routes>
+            <Route path="/admin" element={<AddItems/>}/>
             <Route path="/" element={<Home Namee="Unknown" title="Home" />} />
             <Route path="/loginmode" element={<LoginMode title="Login - Options" />} />
             <Route path="/login/:color" element={<Login title="Login" />} />
