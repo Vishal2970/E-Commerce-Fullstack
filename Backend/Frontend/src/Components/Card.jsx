@@ -1,6 +1,10 @@
 import React from "react";
 
-const Card = ({imge,title,descr}) => {
+const Card = ({ imge, title, descr,id }) => {
+  const handleCartAdd = (e) => {
+    e.preventDefault();
+    alert(id);
+  };
   return (
     <div>
       <div className="card">
@@ -8,7 +12,9 @@ const Card = ({imge,title,descr}) => {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{descr}</p>
-          <a href="/" className="btn btn-primary">Add to cart</a>
+          <button href="/" className="btn btn-primary" onClick={handleCartAdd}>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

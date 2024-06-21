@@ -59,4 +59,30 @@ const getAllProduct =async (req,res)=>{
     }
 }
 
-module.exports = {productAdd,getAllProduct};
+const deleteProduct = async (req,res)=>{
+    try {
+        const {productId} = req.body;
+        console.log("Vishal    "+productId);
+        const productExist = await product.findOne({ productId });
+        console.log(productExist);
+        if(productExist){
+
+            const response= await product.deleteOne({productId})
+            return res.status(200).json({
+                success:true,
+                msg:"deleted succesfully",
+                product:productExist
+            })
+        }else{
+            return res.status(200).json({
+                success:false,
+                msg:"id does not exist"
+            })
+        }
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {productAdd,getAllProduct,deleteProduct};

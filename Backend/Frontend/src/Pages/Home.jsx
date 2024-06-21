@@ -20,7 +20,7 @@ export function Home({ title, description, keywords, author, Namee }) {
 
   useEffect(() => {
     getData();
-  }, [getData()]);
+  }, []);
   console.log(data);
   return (
     <>
@@ -50,6 +50,7 @@ export function Home({ title, description, keywords, author, Namee }) {
               <div className="p-3">
                 <Card
                   imge={item.imgSrc}
+                  id={item.productId}
                   title={item.title}
                   descr={item.descr}
                 />
