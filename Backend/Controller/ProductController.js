@@ -46,4 +46,17 @@ const productAdd = async (req, res) => {
     }
 };
 
-module.exports = productAdd;
+const getAllProduct =async (req,res)=>{
+    try {
+        const response = await product.find();
+        // console.log(response);
+        res.status(200).json({
+            success:true,
+            product:response,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {productAdd,getAllProduct};
