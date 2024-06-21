@@ -17,8 +17,14 @@ const AddItems = () => {
       console.log(response);
       if (response.data.success) {
         alert(response.data.msg);
-      }else if(!response.data.success){
-        alert(response.data.msg)
+        setItems({
+          productId: "",
+          title: "",
+          descr: "",
+          imgSrc: "",
+        });
+      } else if (!response.data.success) {
+        alert(response.data.msg);
       }
     } catch (error) {
       console.log(error);

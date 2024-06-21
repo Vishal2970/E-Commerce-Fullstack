@@ -20,7 +20,7 @@ export function Home({ title, description, keywords, author, Namee }) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData()]);
   console.log(data);
   return (
     <>
