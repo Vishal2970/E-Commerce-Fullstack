@@ -3,7 +3,7 @@ const product = require("../Models/ProductModels");
 const productAdd = async (req, res) => {
     try {
         // Log the incoming request body
-        console.log("Request body:", req.body);
+        // console.log("Request body:", req.body);
 
         const { productId, title, descr, imgSrc } = req.body;
 
@@ -22,7 +22,7 @@ const productAdd = async (req, res) => {
         const productExist = await product.findOne({ productId });
         if (productExist) {
             console.log(productExist);
-            return res.status(400).json({
+            return res.status(200).json({
                 success: false,
                 msg: "Product already exists",
                 product:productExist
@@ -36,6 +36,7 @@ const productAdd = async (req, res) => {
         // Fetch the created product
         const created = await product.findOne({ productId });
         return res.status(202).json({
+            success: true,
             msg: "Product created successfully",
             product: created
         });
