@@ -6,6 +6,7 @@ const ConnectDB = require("./Connection/ConnectDB");
 const AuthRoutes = require("./Routes/AuthRoutes");
 const formRoutes = require("./Routes/formRoutes");
 const ProductRoutes = require("./Routes/ProductRoutes");
+const Cart =require("./Routes/Cart");
 
 
 const corsOptions = {
@@ -22,6 +23,9 @@ app.use("/api/auth", AuthRoutes);
 app.use("/api/form", formRoutes);
 //for product adding 
 app.use("/api/product", ProductRoutes);
+//for adding cart
+app.use("/api/cart",Cart);
+
 
 
 const port = process.env.PORT;

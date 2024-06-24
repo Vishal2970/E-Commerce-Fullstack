@@ -56,7 +56,7 @@ const Card = ({ imge, title, descr, id }) => {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{descr}</p>
-          <button href="/" className="btn btn-primary" onClick={handleCartAdd}>
+          <button href="/" className="btn btn-primary" > {/* onClick={handleCartAdd}  */}
             Add to cart
           </button>
         </div>
