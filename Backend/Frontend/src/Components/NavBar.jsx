@@ -6,7 +6,8 @@ export function NavBar() {
   const currentPath = location.pathname;
   const navigate = useNavigate();
   const { auth } = useAuthContext();
-
+  const imgPath = auth.user?.imagePath;
+  console.log(imgPath);
   const gotoPage = () => {
     const close = document.getElementById("closeit");
     if (close) close.click();
@@ -75,7 +76,7 @@ export function NavBar() {
           )}
           {isAuthenticated && (
             <Link className="navbar-brand m-3" to="/profile">
-              <img src="/profile.jpg" alt="Profile" width="55" height="55" />
+              <img src={"http://localhost:5000/uploads/"+imgPath} alt="Profile" width="55" height="55" />
             </Link>
           )}
           <div

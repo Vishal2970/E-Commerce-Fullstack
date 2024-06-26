@@ -1,28 +1,32 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const jwt=require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
-    require: true,
+    required: true,
   },
   mobile: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
-  isAdmin:{
-    type:Boolean,
-    default:false,
-  }
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  imagePath: {
+    type: String,
+    required: false,
+  },
 });
 
 userSchema.pre("save", async function (next) {
@@ -39,25 +43,26 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-//for token
-userSchema.methods.generateToken=async function(){
-    try {
-        return jwt.sign({
-            userId:this._id.toString(),
-            email:this.email,
-            isAdmin:this.isAdmin,
-        },
-        process.env.JWT_SECRET_KEY,
-        {
-            expiresIn:"7d",
-        }
-    )
-    } catch (error) {
-        console.log(error);
-    }
-}
+// For token
+userSchema.methods.generateToken = async function () {
+  try {
+    return jwt.sign(
+      {
+        userId: this._id.toString(),
+        email: this.email,
+        isAdmin: this.isAdmin,
+      },
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: "7d",
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-//password matching   before it do hashing
+// Password matching before it does hashing
 userSchema.methods.passwordMatch = async function (password) {
   return bcrypt.compare(password, this.password);
 };

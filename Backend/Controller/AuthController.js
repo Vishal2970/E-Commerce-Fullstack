@@ -16,49 +16,80 @@ const login = async (req, res) => {
     if (!userExist && !val) {
       return res.status(400).json({ msg: "Invalid credential" });
     }
-    const data={
-      name:userExist.fullName,
-      email:userExist.email,
-      mobile:userExist.mobile
-    }
+    const data = {
+      name: userExist.fullName,
+      email: userExist.email,
+      mobile: userExist.mobile,
+      imagePath:userExist.imagePath,
+    };
     if (val) {
       res.status(200).json({
-        user:data,
+        user: data,
         msg: "Login sucesfull",
-        token:await userExist.generateToken(),
+        token: await userExist.generateToken(),
       });
-    }
-    else{
-        res.status(401).json({
-            msg:"wrong credential"
-        })
+    } else {
+      res.status(401).json({
+        msg: "wrong credential",
+      });
     }
   } catch (error) {
     console.error(error);
   }
 };
+// const signup = async (req, res) => {
+//   try {
+//     const { fullName, mobile, email, password } = req.body;
+//     // console.log(req.body);
+//     const userExist = await User.findOne({ email });
+//     if (userExist) {
+//       return res.status(400).json({
+//         msg: "user already exist",
+//       });
+//     }
+//     const create = await User.create({ fullName:fullName, mobile:mobile, email:email, password:password });
+//     res.status(201).json({
+//       msg: "you are succesfully registered",
+//       token:await create.generateToken(),
+//       userId:create._id.toString(),
+//     });
+//   } catch (error) {
+//     res.status(501).json({
+//         msg:"Not registered"
+//     })
+//     console.error(error);
+//   }
+// };
 const signup = async (req, res) => {
   try {
     const { fullName, mobile, email, password } = req.body;
-    // console.log(req.body);
     const userExist = await User.findOne({ email });
+
     if (userExist) {
       return res.status(400).json({
-        msg: "user already exist",
+        msg: "User already exists",
       });
     }
-    const create = await User.create({ fullName:fullName, mobile:mobile, email:email, password:password });
+
+    const imagePath = req.file ? req.file.filename : "";
+    const create = await User.create({
+      fullName,
+      mobile,
+      email,
+      password,
+      imagePath,
+    });
+
     res.status(201).json({
-      msg: "you are succesfully registered",
-      token:await create.generateToken(),
-      userId:create._id.toString(),
+      msg: "You are successfully registered",
+      token: await create.generateToken(),
+      userId: create._id.toString(),
     });
   } catch (error) {
     res.status(501).json({
-        msg:"Not registered"
-    })
+      msg: "Not registered",
+    });
     console.error(error);
   }
 };
-
-module.exports = {  login, signup };//home
+module.exports = { login, signup }; //home
