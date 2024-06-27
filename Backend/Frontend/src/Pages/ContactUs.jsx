@@ -156,8 +156,8 @@ export function ContactUs({ description, keywords, author, title }) {
           <div className="col-sm-6 mb-3 mb-sm-0">
             <div className="card">
               <div className="card-body">
-                <form onSubmit={handleSubmit}>
-                  <h5 className="card-title">Send Your Query Here</h5>
+                <form action="https://formspree.io/f/xanwwkzg" method="POST" onSubmit={handleSubmit}>
+                  <h5 className="card-title">Send Your Query Here </h5>
                   <p className="card-text">
                     <div className="col-sm-6 mb-3 mb-sm-0 p-2">
                       <div className="mb-3">
