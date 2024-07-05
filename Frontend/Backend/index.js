@@ -88,7 +88,7 @@ app.use("/api/product", ProductRoutes);
 // Adding cart route
 app.use("/api/cart", Cart);
 
-const port = process.env.PORT;
+const port = process.env.PORT||5000;
 
 ConnectDB().then(() => {
   app.listen(port, () => {
