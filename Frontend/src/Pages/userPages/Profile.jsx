@@ -2,7 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useAuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+import { getAuth, signOut } from "firebase/auth";
+import app from ".././../firebase";
 
 const Profile = ({ description, keywords, author, title }) => {
   const { auth, setAuth } = useAuthContext();
@@ -10,15 +11,17 @@ const Profile = ({ description, keywords, author, title }) => {
   const Name = auth.user?.name;
   const email = auth.user?.email;
   const mobile = auth.user?.mobile;
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleLogout = () => {
+    const auth = getAuth(app);
+    signOut(auth);
     setAuth({
       user: null,
       token: null,
     });
     // localStorage.removeItem("auth");
     sessionStorage.removeItem("auth");
-    navigate("/")
+    navigate("/");
   };
 
   return (

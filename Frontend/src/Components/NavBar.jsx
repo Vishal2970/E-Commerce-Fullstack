@@ -6,8 +6,8 @@ export function NavBar() {
   const currentPath = location.pathname;
   const navigate = useNavigate();
   const { auth } = useAuthContext();
-  const imgPath = auth.user?.imagePath;
-  console.log(imgPath);
+  const imgPath = auth.user?.imgSrc;
+  console.log(imgPath)
   const gotoPage = () => {
     const close = document.getElementById("closeit");
     if (close) close.click();
