@@ -1,9 +1,11 @@
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../Context/AuthContext";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import app from "../firebase";
 
 export function Login({ description, keywords, author, title }) {
   const navigate = useNavigate();
@@ -12,9 +14,42 @@ export function Login({ description, keywords, author, title }) {
     email: "",
     password: "",
   });
+  const auth = getAuth(app);
   const location = useLocation();
   const { setAuth } = useAuthContext();
   const URI = "http://localhost:5000/api/auth/login";
+
+  const provider = new GoogleAuthProvider();
+  const handleGoogle = async () => {
+    try {
+      const response = await signInWithPopup(auth, provider).then((result) => {
+        const user = result.user;
+        const userdata = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        };
+        if (response) {
+          // toast.success(data.msg);
+          setAuth({
+            user: userdata,
+            token: user.accessToken,
+          });
+          sessionStorage.setItem(
+            "auth",
+            JSON.stringify({ user: userdata, token: user.accessToken })
+          );
+          navigate(location.state || "/");
+          setLogin({
+            email: "",
+            password: "",
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +83,7 @@ export function Login({ description, keywords, author, title }) {
             "auth",
             JSON.stringify({ user: data.user, token: data.token })
           );
-          navigate(location.state||"/");
+          navigate(location.state || "/");
           setLogin({
             email: "",
             password: "",
@@ -117,6 +152,12 @@ export function Login({ description, keywords, author, title }) {
                   Login
                 </button>
               </form>
+              <button
+                onClick={handleGoogle}
+                className="btn btn-outline-success m-3"
+              >
+                Login with Google
+              </button>
             </p>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <Link to={`/signup/${color}`} className="btn btn-primary m-3 p-2">
